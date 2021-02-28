@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k3app4-deployment
+spec:
+  selector:
+    matchLabels:
+      app: k3app4-pod
+  template:
+    metadata:
+      labels:
+        app: k3app4-pod
+    spec:
+      containers:
+      - name: k3app4-container
+        image: kdemo.azurecr.io/k3app4:v1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
